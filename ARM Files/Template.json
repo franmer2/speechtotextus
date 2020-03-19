@@ -19,6 +19,7 @@
         "tenanId": "[subscription().tenantId]",
         "storageAccountNameLowerCase" : "[toLower(trim(parameters('storageAccountName')))]",
         "cosmosAccountNameLowerCase" : "[toLower(trim(parameters('cosmosDBAccountName')))]",
+        "cognitiveAccountNameLowerCase" : "[toLower(trim(parameters('cognitiveServiceName')))]",
         "subscriptionId": "[subscription().subscriptionId]",
         "connections_azureblob_name":   "azureblob",
         "connections_documentdb_name": "documentdb",
@@ -199,7 +200,7 @@
         {
             "type": "Microsoft.CognitiveServices/accounts",
             "apiVersion": "[variables('speechAPIVersion')]",
-            "name": "[parameters('cognitiveServiceName')]",
+            "name": "[variables('cognitiveAccountNameLowerCase')]",
             "location": "[variables('location')]",
             "sku": {
                 "name": "S0"
@@ -261,7 +262,7 @@
                             "type": "Object"
                         },
                         "CognitiveSecret": {
-                            "defaultValue": "[listKeys(resourceId('Microsoft.CognitiveServices/accounts/', parameters('cognitiveServiceName')), variables('SpeechAPIVersion')).key1]",
+                            "defaultValue": "[listKeys(resourceId('Microsoft.CognitiveServices/accounts/', variables('cognitiveAccountNameLowerCase')), variables('SpeechAPIVersion')).key1]",
                             "type": "String"
                         },
                         "azureRegion": {

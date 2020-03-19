@@ -18,6 +18,7 @@
         "location": "[resourceGroup().location]",
         "tenanId": "[subscription().tenantId]",
         "storageAccountNameLowerCase" : "[toLower(trim(parameters('storageAccountName')))]",
+        "cosmosAccountNameLowerCase" : "[toLower(trim(parameters('cosmosDBAccountName')))]",
         "subscriptionId": "[subscription().subscriptionId]",
         "connections_azureblob_name":   "azureblob",
         "connections_documentdb_name": "documentdb",
@@ -117,7 +118,7 @@
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "apiVersion": "[variables('cosmosAPIVersion')]",
-            "name": "[parameters('cosmosDBAccountName')]",
+            "name": "[variables('cosmosAccountNameLowerCase')]",
             "location": "[variables('location')]",
             "tags": {
                 "defaultExperience": "Core (SQL)",
@@ -143,9 +144,9 @@
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
             "apiVersion": "[variables('cosmosAPIVersion')]",
-            "name": "[concat(parameters('cosmosDBAccountName'), '/SpeechToTextDB')]",
+            "name": "[concat(variables('cosmosAccountNameLowerCase'), '/SpeechToTextDB')]",
             "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDBAccountName'))]"
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountNameLowerCase'))]"
             ],
             "properties": {
                 "resource": {
@@ -157,10 +158,10 @@
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
             "apiVersion": "[variables('cosmosAPIVersion')]",
-            "name": "[concat(parameters('cosmosDBAccountName'), '/SpeechToTextDB/SpeechData')]",
+            "name": "[concat(variables('cosmosAccountNameLowerCase'), '/SpeechToTextDB/SpeechData')]",
             "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('cosmosDBAccountName'), 'SpeechToTextDB')]",
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDBAccountName'))]"
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosAccountNameLowerCase'), 'SpeechToTextDB')]",
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountNameLowerCase'))]"
             ],
             "properties": {
                 "resource": {
@@ -231,8 +232,8 @@
             "properties": {
                 "displayName": "DemoSpeech_ComosConnection",
                 "parameterValues": {
-                    "databaseAccount": "[parameters('cosmosDBAccountName')]",
-                    "accessKey": "[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDBAccountName')), variables('cosmosAPIVersion')).primaryMasterKey]"
+                    "databaseAccount": "[variables('cosmosAccountNameLowerCase')]",
+                    "accessKey": "[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountNameLowerCase')), variables('cosmosAPIVersion')).primaryMasterKey]"
                  },
                 "customParameterValues": {},
                 "api": {

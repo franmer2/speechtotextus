@@ -40,7 +40,7 @@
         "workflows_DemoLogicApp_name": "DemoLogicApp",
         "speechAPIVersion": "[providers('Microsoft.CognitiveServices', 'accounts').apiVersions[0]]",
         "webAPIVersion": "[providers('Microsoft.Web','connections').apiVersions[0]]",
-        "logicAppAPIVersion": "[ providers('Microsoft.Logic','workflows').apiVersions[0]]"      
+        "logicAppAPIVersion": "[ providers('Microsoft.Logic','workflows').apiVersions[0]]"     
 
 
     },
@@ -529,268 +529,172 @@
                                     "type": "ParseJson",
                                     "inputs": {
                                         "content": "@body('Get_channel_0_results')",
-                                        "schema": {
+                                        "schema": {                                        
                                             "properties": {
-                                                "properties": {
-                                                    "properties": {
-                                                        "AudioFileResults": {
-                                                            "properties": {
+                                                "AudioFileResults": {
+                                                    "items": {
+                                                        "properties": {
+                                                            "AudioFileName": {
+                                                                "type": "string"
+                                                            },
+                                                            "AudioFileUrl": {},
+                                                            "AudioLengthInSeconds": {
+                                                                "type": "number"
+                                                            },
+                                                            "CombinedResults": {
                                                                 "items": {
                                                                     "properties": {
-                                                                        "properties": {
-                                                                            "properties": {
-                                                                                "AudioFileName": {
-                                                                                    "properties": {
-                                                                                        "type": {
-                                                                                            "type": "string"
-                                                                                        }
-                                                                                    },
-                                                                                    "type": "object"
-                                                                                },
-                                                                                "AudioFileUrl": {
-                                                                                    "properties": {},
-                                                                                    "type": "object"
-                                                                                },
-                                                                                "SegmentResults": {
-                                                                                    "properties": {
-                                                                                        "items": {
-                                                                                            "properties": {
-                                                                                                "properties": {
-                                                                                                    "properties": {
-                                                                                                        "ChannelNumber": {
-                                                                                                            "properties": {},
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "Duration": {
-                                                                                                            "properties": {
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "NBest": {
-                                                                                                            "properties": {
-                                                                                                                "items": {
-                                                                                                                    "properties": {
-                                                                                                                        "properties": {
-                                                                                                                            "properties": {
-                                                                                                                                "Confidence": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Display": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "ITN": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Lexical": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "MaskedITN": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Sentiment": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "properties": {
-                                                                                                                                            "properties": {
-                                                                                                                                                "Negative": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "type": {
-                                                                                                                                                            "type": "string"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                },
-                                                                                                                                                "Neutral": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "type": {
-                                                                                                                                                            "type": "string"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                },
-                                                                                                                                                "Positive": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "type": {
-                                                                                                                                                            "type": "string"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                }
-                                                                                                                                            },
-                                                                                                                                            "type": "object"
-                                                                                                                                        },
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Words": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "items": {
-                                                                                                                                            "properties": {
-                                                                                                                                                "properties": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "Duration": {
-                                                                                                                                                            "properties": {
-                                                                                                                                                                "type": {
-                                                                                                                                                                    "type": "string"
-                                                                                                                                                                }
-                                                                                                                                                            },
-                                                                                                                                                            "type": "object"
-                                                                                                                                                        },
-                                                                                                                                                        "Offset": {
-                                                                                                                                                            "properties": {
-                                                                                                                                                                "type": {
-                                                                                                                                                                    "type": "string"
-                                                                                                                                                                }
-                                                                                                                                                            },
-                                                                                                                                                            "type": "object"
-                                                                                                                                                        },
-                                                                                                                                                        "Word": {
-                                                                                                                                                            "properties": {
-                                                                                                                                                                "type": {
-                                                                                                                                                                    "type": "string"
-                                                                                                                                                                }
-                                                                                                                                                            },
-                                                                                                                                                            "type": "object"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                },
-                                                                                                                                                "required": {
-                                                                                                                                                    "items": {
-                                                                                                                                                        "type": "string"
-                                                                                                                                                    },
-                                                                                                                                                    "type": "array"
-                                                                                                                                                },
-                                                                                                                                                "type": {
-                                                                                                                                                    "type": "string"
-                                                                                                                                                }
-                                                                                                                                            },
-                                                                                                                                            "type": "object"
-                                                                                                                                        },
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                }
-                                                                                                                            },
-                                                                                                                            "type": "object"
-                                                                                                                        },
-                                                                                                                        "required": {
-                                                                                                                            "items": {
-                                                                                                                                "type": "string"
-                                                                                                                            },
-                                                                                                                            "type": "array"
-                                                                                                                        },
-                                                                                                                        "type": {
-                                                                                                                            "type": "string"
-                                                                                                                        }
-                                                                                                                    },
-                                                                                                                    "type": "object"
-                                                                                                                },
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "Offset": {
-                                                                                                            "properties": {
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "RecognitionStatus": {
-                                                                                                            "properties": {
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "SpeakerId": {
-                                                                                                            "properties": {},
-                                                                                                            "type": "object"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "type": "object"
-                                                                                                },
-                                                                                                "required": {
-                                                                                                    "items": {
-                                                                                                        "type": "string"
-                                                                                                    },
-                                                                                                    "type": "array"
-                                                                                                },
-                                                                                                "type": {
-                                                                                                    "type": "string"
-                                                                                                }
-                                                                                            },
-                                                                                            "type": "object"
-                                                                                        },
-                                                                                        "type": {
-                                                                                            "type": "string"
-                                                                                        }
-                                                                                    },
-                                                                                    "type": "object"
-                                                                                }
-                                                                            },
-                                                                            "type": "object"
+                                                                        "ChannelNumber": {},
+                                                                        "Display": {
+                                                                            "type": "string"
                                                                         },
-                                                                        "required": {
-                                                                            "items": {
-                                                                                "type": "string"
-                                                                            },
-                                                                            "type": "array"
+                                                                        "ITN": {
+                                                                            "type": "string"
                                                                         },
-                                                                        "type": {
+                                                                        "Lexical": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "MaskedITN": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "ChannelNumber",
+                                                                        "Lexical",
+                                                                        "ITN",
+                                                                        "MaskedITN",
+                                                                        "Display"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
-                                                                "type": {
-                                                                    "type": "string"
-                                                                }
+                                                                "type": "array"
                                                             },
-                                                            "type": "object"
-                                                        }
+                                                            "SegmentResults": {
+                                                                "items": {
+                                                                    "properties": {
+                                                                        "ChannelNumber": {},
+                                                                        "Duration": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "DurationInSeconds": {
+                                                                            "type": "number"
+                                                                        },
+                                                                        "NBest": {
+                                                                            "items": {
+                                                                                "properties": {
+                                                                                    "Confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "Display": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "ITN": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "Lexical": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "MaskedITN": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "Sentiment": {
+                                                                                        "properties": {
+                                                                                            "Negative": {
+                                                                                                "type": "number"
+                                                                                            },
+                                                                                            "Neutral": {
+                                                                                                "type": "number"
+                                                                                            },
+                                                                                            "Positive": {
+                                                                                                "type": "number"
+                                                                                            }
+                                                                                        },
+                                                                                        "type": "object"
+                                                                                    },
+                                                                                    "Words": {
+                                                                                        "items": {
+                                                                                            "properties": {
+                                                                                                "Confidence": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "Duration": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "DurationInSeconds": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "Offset": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "OffsetInSeconds": {
+                                                                                                    "type": "number"
+                                                                                                },
+                                                                                                "Word": {
+                                                                                                    "type": "string"
+                                                                                                }
+                                                                                            },
+                                                                                            "required": [
+                                                                                                "Word",
+                                                                                                "Offset",
+                                                                                                "Duration",
+                                                                                                "OffsetInSeconds",
+                                                                                                "DurationInSeconds",
+                                                                                                "Confidence"
+                                                                                            ],
+                                                                                            "type": "object"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "Confidence",
+                                                                                    "Lexical",
+                                                                                    "ITN",
+                                                                                    "MaskedITN",
+                                                                                    "Display",
+                                                                                    "Sentiment",
+                                                                                    "Words"
+                                                                                ],
+                                                                                "type": "object"
+                                                                            },
+                                                                            "type": "array"
+                                                                        },
+                                                                        "Offset": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "OffsetInSeconds": {
+                                                                            "type": "number"
+                                                                        },
+                                                                        "RecognitionStatus": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "SpeakerId": {}
+                                                                    },
+                                                                    "required": [
+                                                                        "RecognitionStatus",
+                                                                        "ChannelNumber",
+                                                                        "SpeakerId",
+                                                                        "Offset",
+                                                                        "Duration",
+                                                                        "OffsetInSeconds",
+                                                                        "DurationInSeconds",
+                                                                        "NBest"
+                                                                    ],
+                                                                    "type": "object"
+                                                                },
+                                                                "type": "array"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "AudioFileName",
+                                                            "AudioFileUrl",
+                                                            "AudioLengthInSeconds",
+                                                            "CombinedResults",
+                                                            "SegmentResults"
+                                                        ],
+                                                        "type": "object"
                                                     },
-                                                    "type": "object"
-                                                },
-                                                "type": {
-                                                    "type": "string"
+                                                    "type": "array"
                                                 }
                                             },
                                             "type": "object"
@@ -808,266 +712,170 @@
                                         "content": "@body('Get_channel_1_results')",
                                         "schema": {
                                             "properties": {
-                                                "properties": {
-                                                    "properties": {
-                                                        "AudioFileResults": {
-                                                            "properties": {
+                                                "AudioFileResults": {
+                                                    "items": {
+                                                        "properties": {
+                                                            "AudioFileName": {
+                                                                "type": "string"
+                                                            },
+                                                            "AudioFileUrl": {},
+                                                            "AudioLengthInSeconds": {
+                                                                "type": "number"
+                                                            },
+                                                            "CombinedResults": {
                                                                 "items": {
                                                                     "properties": {
-                                                                        "properties": {
-                                                                            "properties": {
-                                                                                "AudioFileName": {
-                                                                                    "properties": {
-                                                                                        "type": {
-                                                                                            "type": "string"
-                                                                                        }
-                                                                                    },
-                                                                                    "type": "object"
-                                                                                },
-                                                                                "AudioFileUrl": {
-                                                                                    "properties": {},
-                                                                                    "type": "object"
-                                                                                },
-                                                                                "SegmentResults": {
-                                                                                    "properties": {
-                                                                                        "items": {
-                                                                                            "properties": {
-                                                                                                "properties": {
-                                                                                                    "properties": {
-                                                                                                        "ChannelNumber": {
-                                                                                                            "properties": {},
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "Duration": {
-                                                                                                            "properties": {
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "NBest": {
-                                                                                                            "properties": {
-                                                                                                                "items": {
-                                                                                                                    "properties": {
-                                                                                                                        "properties": {
-                                                                                                                            "properties": {
-                                                                                                                                "Confidence": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Display": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "ITN": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Lexical": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "MaskedITN": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Sentiment": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "properties": {
-                                                                                                                                            "properties": {
-                                                                                                                                                "Negative": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "type": {
-                                                                                                                                                            "type": "string"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                },
-                                                                                                                                                "Neutral": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "type": {
-                                                                                                                                                            "type": "string"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                },
-                                                                                                                                                "Positive": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "type": {
-                                                                                                                                                            "type": "string"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                }
-                                                                                                                                            },
-                                                                                                                                            "type": "object"
-                                                                                                                                        },
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                },
-                                                                                                                                "Words": {
-                                                                                                                                    "properties": {
-                                                                                                                                        "items": {
-                                                                                                                                            "properties": {
-                                                                                                                                                "properties": {
-                                                                                                                                                    "properties": {
-                                                                                                                                                        "Duration": {
-                                                                                                                                                            "properties": {
-                                                                                                                                                                "type": {
-                                                                                                                                                                    "type": "string"
-                                                                                                                                                                }
-                                                                                                                                                            },
-                                                                                                                                                            "type": "object"
-                                                                                                                                                        },
-                                                                                                                                                        "Offset": {
-                                                                                                                                                            "properties": {
-                                                                                                                                                                "type": {
-                                                                                                                                                                    "type": "string"
-                                                                                                                                                                }
-                                                                                                                                                            },
-                                                                                                                                                            "type": "object"
-                                                                                                                                                        },
-                                                                                                                                                        "Word": {
-                                                                                                                                                            "properties": {
-                                                                                                                                                                "type": {
-                                                                                                                                                                    "type": "string"
-                                                                                                                                                                }
-                                                                                                                                                            },
-                                                                                                                                                            "type": "object"
-                                                                                                                                                        }
-                                                                                                                                                    },
-                                                                                                                                                    "type": "object"
-                                                                                                                                                },
-                                                                                                                                                "required": {
-                                                                                                                                                    "items": {
-                                                                                                                                                        "type": "string"
-                                                                                                                                                    },
-                                                                                                                                                    "type": "array"
-                                                                                                                                                },
-                                                                                                                                                "type": {
-                                                                                                                                                    "type": "string"
-                                                                                                                                                }
-                                                                                                                                            },
-                                                                                                                                            "type": "object"
-                                                                                                                                        },
-                                                                                                                                        "type": {
-                                                                                                                                            "type": "string"
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                    "type": "object"
-                                                                                                                                }
-                                                                                                                            },
-                                                                                                                            "type": "object"
-                                                                                                                        },
-                                                                                                                        "required": {
-                                                                                                                            "items": {
-                                                                                                                                "type": "string"
-                                                                                                                            },
-                                                                                                                            "type": "array"
-                                                                                                                        },
-                                                                                                                        "type": {
-                                                                                                                            "type": "string"
-                                                                                                                        }
-                                                                                                                    },
-                                                                                                                    "type": "object"
-                                                                                                                },
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "Offset": {
-                                                                                                            "properties": {
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "RecognitionStatus": {
-                                                                                                            "properties": {
-                                                                                                                "type": {
-                                                                                                                    "type": "string"
-                                                                                                                }
-                                                                                                            },
-                                                                                                            "type": "object"
-                                                                                                        },
-                                                                                                        "SpeakerId": {
-                                                                                                            "properties": {},
-                                                                                                            "type": "object"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "type": "object"
-                                                                                                },
-                                                                                                "required": {
-                                                                                                    "items": {
-                                                                                                        "type": "string"
-                                                                                                    },
-                                                                                                    "type": "array"
-                                                                                                },
-                                                                                                "type": {
-                                                                                                    "type": "string"
-                                                                                                }
-                                                                                            },
-                                                                                            "type": "object"
-                                                                                        },
-                                                                                        "type": {
-                                                                                            "type": "string"
-                                                                                        }
-                                                                                    },
-                                                                                    "type": "object"
-                                                                                }
-                                                                            },
-                                                                            "type": "object"
+                                                                        "ChannelNumber": {},
+                                                                        "Display": {
+                                                                            "type": "string"
                                                                         },
-                                                                        "required": {
-                                                                            "items": {
-                                                                                "type": "string"
-                                                                            },
-                                                                            "type": "array"
+                                                                        "ITN": {
+                                                                            "type": "string"
                                                                         },
-                                                                        "type": {
+                                                                        "Lexical": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "MaskedITN": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "ChannelNumber",
+                                                                        "Lexical",
+                                                                        "ITN",
+                                                                        "MaskedITN",
+                                                                        "Display"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
-                                                                "type": {
-                                                                    "type": "string"
-                                                                }
+                                                                "type": "array"
                                                             },
-                                                            "type": "object"
-                                                        }
+                                                            "SegmentResults": {
+                                                                "items": {
+                                                                    "properties": {
+                                                                        "ChannelNumber": {},
+                                                                        "Duration": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "DurationInSeconds": {
+                                                                            "type": "number"
+                                                                        },
+                                                                        "NBest": {
+                                                                            "items": {
+                                                                                "properties": {
+                                                                                    "Confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "Display": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "ITN": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "Lexical": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "MaskedITN": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "Sentiment": {
+                                                                                        "properties": {
+                                                                                            "Negative": {
+                                                                                                "type": "number"
+                                                                                            },
+                                                                                            "Neutral": {
+                                                                                                "type": "number"
+                                                                                            },
+                                                                                            "Positive": {
+                                                                                                "type": "number"
+                                                                                            }
+                                                                                        },
+                                                                                        "type": "object"
+                                                                                    },
+                                                                                    "Words": {
+                                                                                        "items": {
+                                                                                            "properties": {
+                                                                                                "Confidence": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "Duration": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "DurationInSeconds": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "Offset": {
+                                                                                                    "type": "integer"
+                                                                                                },
+                                                                                                "OffsetInSeconds": {
+                                                                                                    "type": "number"
+                                                                                                },
+                                                                                                "Word": {
+                                                                                                    "type": "string"
+                                                                                                }
+                                                                                            },
+                                                                                            "required": [
+                                                                                                "Word",
+                                                                                                "Offset",
+                                                                                                "Duration",
+                                                                                                "OffsetInSeconds",
+                                                                                                "DurationInSeconds",
+                                                                                                "Confidence"
+                                                                                            ],
+                                                                                            "type": "object"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "Confidence",
+                                                                                    "Lexical",
+                                                                                    "ITN",
+                                                                                    "MaskedITN",
+                                                                                    "Display",
+                                                                                    "Sentiment",
+                                                                                    "Words"
+                                                                                ],
+                                                                                "type": "object"
+                                                                            },
+                                                                            "type": "array"
+                                                                        },
+                                                                        "Offset": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "OffsetInSeconds": {
+                                                                            "type": "number"
+                                                                        },
+                                                                        "RecognitionStatus": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "SpeakerId": {}
+                                                                    },
+                                                                    "required": [
+                                                                        "RecognitionStatus",
+                                                                        "ChannelNumber",
+                                                                        "SpeakerId",
+                                                                        "Offset",
+                                                                        "Duration",
+                                                                        "OffsetInSeconds",
+                                                                        "DurationInSeconds",
+                                                                        "NBest"
+                                                                    ],
+                                                                    "type": "object"
+                                                                },
+                                                                "type": "array"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "AudioFileName",
+                                                            "AudioFileUrl",
+                                                            "AudioLengthInSeconds",
+                                                            "CombinedResults",
+                                                            "SegmentResults"
+                                                        ],
+                                                        "type": "object"
                                                     },
-                                                    "type": "object"
-                                                },
-                                                "type": {
-                                                    "type": "string"
+                                                    "type": "array"
                                                 }
                                             },
                                             "type": "object"
@@ -1535,133 +1343,170 @@
                                                     "content": "@body('Get_only_channel_0_results')",
                                                     "schema": {
                                                         "properties": {
-                                                            "AudioDetails": {
+                                                            "AudioFileResults": {
                                                                 "items": {
                                                                     "properties": {
-                                                                        "Channel_0": {
-                                                                            "properties": {
-                                                                                "AudioFileResults": {
-                                                                                    "items": {
-                                                                                        "properties": {
-                                                                                            "AudioFileName": {
-                                                                                                "type": "string"
-                                                                                            },
-                                                                                            "AudioFileUrl": {},
-                                                                                            "SegmentResults": {
-                                                                                                "items": {
+                                                                        "AudioFileName": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "AudioFileUrl": {},
+                                                                        "AudioLengthInSeconds": {
+                                                                            "type": "number"
+                                                                        },
+                                                                        "CombinedResults": {
+                                                                            "items": {
+                                                                                "properties": {
+                                                                                    "ChannelNumber": {},
+                                                                                    "Display": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "ITN": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "Lexical": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "MaskedITN": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "ChannelNumber",
+                                                                                    "Lexical",
+                                                                                    "ITN",
+                                                                                    "MaskedITN",
+                                                                                    "Display"
+                                                                                ],
+                                                                                "type": "object"
+                                                                            },
+                                                                            "type": "array"
+                                                                        },
+                                                                        "SegmentResults": {
+                                                                            "items": {
+                                                                                "properties": {
+                                                                                    "ChannelNumber": {},
+                                                                                    "Duration": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "DurationInSeconds": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "NBest": {
+                                                                                        "items": {
+                                                                                            "properties": {
+                                                                                                "Confidence": {
+                                                                                                    "type": "number"
+                                                                                                },
+                                                                                                "Display": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "ITN": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "Lexical": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "MaskedITN": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "Sentiment": {
                                                                                                     "properties": {
-                                                                                                        "ChannelNumber": {},
-                                                                                                        "Duration": {
-                                                                                                            "type": "integer"
+                                                                                                        "Negative": {
+                                                                                                            "type": "number"
                                                                                                         },
-                                                                                                        "NBest": {
-                                                                                                            "items": {
-                                                                                                                "properties": {
-                                                                                                                    "Confidence": {
-                                                                                                                        "type": "number"
-                                                                                                                    },
-                                                                                                                    "Display": {
-                                                                                                                        "type": "string"
-                                                                                                                    },
-                                                                                                                    "ITN": {
-                                                                                                                        "type": "string"
-                                                                                                                    },
-                                                                                                                    "Lexical": {
-                                                                                                                        "type": "string"
-                                                                                                                    },
-                                                                                                                    "MaskedITN": {
-                                                                                                                        "type": "string"
-                                                                                                                    },
-                                                                                                                    "Words": {
-                                                                                                                        "items": {
-                                                                                                                            "properties": {
-                                                                                                                                "Duration": {
-                                                                                                                                    "type": "integer"
-                                                                                                                                },
-                                                                                                                                "Offset": {
-                                                                                                                                    "type": "integer"
-                                                                                                                                },
-                                                                                                                                "Word": {
-                                                                                                                                    "type": "string"
-                                                                                                                                }
-                                                                                                                            },
-                                                                                                                            "required": [
-                                                                                                                                "Word",
-                                                                                                                                "Offset",
-                                                                                                                                "Duration"
-                                                                                                                            ],
-                                                                                                                            "type": "object"
-                                                                                                                        },
-                                                                                                                        "type": "array"
-                                                                                                                    }
-                                                                                                                },
-                                                                                                                "required": [
-                                                                                                                    "Confidence",
-                                                                                                                    "Lexical",
-                                                                                                                    "ITN",
-                                                                                                                    "MaskedITN",
-                                                                                                                    "Display",
-                                                                                                                    "Words"
-                                                                                                                ],
-                                                                                                                "type": "object"
-                                                                                                            },
-                                                                                                            "type": "array"
+                                                                                                        "Neutral": {
+                                                                                                            "type": "number"
                                                                                                         },
-                                                                                                        "Offset": {
-                                                                                                            "type": "integer"
-                                                                                                        },
-                                                                                                        "RecognitionStatus": {
-                                                                                                            "type": "string"
-                                                                                                        },
-                                                                                                        "SpeakerId": {}
+                                                                                                        "Positive": {
+                                                                                                            "type": "number"
+                                                                                                        }
                                                                                                     },
-                                                                                                    "required": [
-                                                                                                        "RecognitionStatus",
-                                                                                                        "ChannelNumber",
-                                                                                                        "SpeakerId",
-                                                                                                        "Offset",
-                                                                                                        "Duration",
-                                                                                                        "NBest"
-                                                                                                    ],
                                                                                                     "type": "object"
                                                                                                 },
-                                                                                                "type": "array"
-                                                                                            }
+                                                                                                "Words": {
+                                                                                                    "items": {
+                                                                                                        "properties": {
+                                                                                                            "Confidence": {
+                                                                                                                "type": "integer"
+                                                                                                            },
+                                                                                                            "Duration": {
+                                                                                                                "type": "integer"
+                                                                                                            },
+                                                                                                            "DurationInSeconds": {
+                                                                                                                "type": "integer"
+                                                                                                            },
+                                                                                                            "Offset": {
+                                                                                                                "type": "integer"
+                                                                                                            },
+                                                                                                            "OffsetInSeconds": {
+                                                                                                                "type": "number"
+                                                                                                            },
+                                                                                                            "Word": {
+                                                                                                                "type": "string"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "required": [
+                                                                                                            "Word",
+                                                                                                            "Offset",
+                                                                                                            "Duration",
+                                                                                                            "OffsetInSeconds",
+                                                                                                            "DurationInSeconds",
+                                                                                                            "Confidence"
+                                                                                                        ],
+                                                                                                        "type": "object"
+                                                                                                    },
+                                                                                                    "type": "array"
+                                                                                                }
+                                                                                            },
+                                                                                            "required": [
+                                                                                                "Confidence",
+                                                                                                "Lexical",
+                                                                                                "ITN",
+                                                                                                "MaskedITN",
+                                                                                                "Display",
+                                                                                                "Sentiment",
+                                                                                                "Words"
+                                                                                            ],
+                                                                                            "type": "object"
                                                                                         },
-                                                                                        "required": [
-                                                                                            "AudioFileName",
-                                                                                            "AudioFileUrl",
-                                                                                            "SegmentResults"
-                                                                                        ],
-                                                                                        "type": "object"
+                                                                                        "type": "array"
                                                                                     },
-                                                                                    "type": "array"
-                                                                                }
+                                                                                    "Offset": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "OffsetInSeconds": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "RecognitionStatus": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "SpeakerId": {}
+                                                                                },
+                                                                                "required": [
+                                                                                    "RecognitionStatus",
+                                                                                    "ChannelNumber",
+                                                                                    "SpeakerId",
+                                                                                    "Offset",
+                                                                                    "Duration",
+                                                                                    "OffsetInSeconds",
+                                                                                    "DurationInSeconds",
+                                                                                    "NBest"
+                                                                                ],
+                                                                                "type": "object"
                                                                             },
-                                                                            "type": "object"
+                                                                            "type": "array"
                                                                         }
                                                                     },
                                                                     "required": [
-                                                                        "Channel_0"
+                                                                        "AudioFileName",
+                                                                        "AudioFileUrl",
+                                                                        "AudioLengthInSeconds",
+                                                                        "CombinedResults",
+                                                                        "SegmentResults"
                                                                     ],
                                                                     "type": "object"
                                                                 },
                                                                 "type": "array"
-                                                            },
-                                                            "AudioLink": {
-                                                                "type": "string"
-                                                            },
-                                                            "Date": {
-                                                                "type": "string"
-                                                            },
-                                                            "Language": {
-                                                                "type": "string"
-                                                            },
-                                                            "MyDate": {
-                                                                "type": "string"
-                                                            },
-                                                            "id": {
-                                                                "type": "string"
                                                             }
                                                         },
                                                         "type": "object"
